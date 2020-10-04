@@ -1,19 +1,4 @@
-# 開発環境 ver
-# FROM node:12-alpine
-
-# ENV CI=true
-
-# WORKDIR /app
-
-# COPY package.json yarn.lock ./
-
-# RUN yarn install --production --no-progress
-
-# COPY . .
-
-# CMD ["yarn", "start"]
-
-# 開発環境 ver
+# 本番 ver
 FROM node:12-alpine
 
 MAINTAINER dilmnqvovpnmlib <simplelpmis6@gmail.com>
@@ -31,10 +16,9 @@ RUN apk add nginx && \
 
 RUN mkdir /app
 WORKDIR /app
-# COPY package.json yarn.lock ./
-# RUN yarn install --production --no-progress
-COPY . .
-# RUN yarn build
+RUN mkdir build
+COPY ./build ./build
+COPY ./docker-entrypoint.sh .
 
 RUN sed -i 's/#rc_sys=""/rc_sys="lxc"/g' /etc/rc.conf
 RUN echo 'rc_provide="loopback net"' >> /etc/rc.conf

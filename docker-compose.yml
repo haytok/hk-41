@@ -1,11 +1,5 @@
 version: "3"
 
 services:
-  app:
-    build: .
-    container_name: app
-    restart: always
-    ports:
-      - "80:80"
-    volumes:
-      - .:/app
+  frontend:
+    container_name: frontend
