@@ -412,6 +412,120 @@ export const MainComponent = ({
                 光ファイバー通信の研究を行っています。
               </p>
             </VerticalTimelineElement>
+
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              date="August 2020"
+              iconStyle={{
+                background: "rgb(16, 204, 82)",
+                color: "#fff",
+              }}
+            >
+              <h2
+                className="vertical-timeline-element-title"
+                style={{ textAlign: "left" }}
+              >
+                日本経済新聞 サマーインターン 参加
+              </h2>
+              <p style={{ textAlign: "left" }}>
+                日経の記事データなど各種 API
+                や膨大なアクセスログデータを使ってデータ解析を行いました。
+              </p>
+            </VerticalTimelineElement>
+
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              date="August 2020 ~ September 2020"
+              iconStyle={{
+                background: "rgb(16, 204, 82)",
+                color: "#fff",
+              }}
+            >
+              <h2
+                className="vertical-timeline-element-title"
+                style={{ textAlign: "left" }}
+              >
+                Chatwork サマーインターン 参加
+              </h2>
+              <p style={{ textAlign: "left" }}>
+                React + Redux + TypeScript
+                を使ったフロントエンドの開発をチームで行いました。
+              </p>
+            </VerticalTimelineElement>
+
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              date="September 2020"
+              iconStyle={{
+                background: "rgb(16, 204, 82)",
+                color: "#fff",
+              }}
+            >
+              <h2
+                className="vertical-timeline-element-title"
+                style={{ textAlign: "left" }}
+              >
+                はてな サマーインターン 参加
+              </h2>
+              <p style={{ textAlign: "left" }}>
+                GO + gRPC + minikube + Docker
+                を使ってブログサービスを実装しました。
+                <a
+                  href="https://dilmnqvo.hatenablog.com/entry/2020/09/11/182152"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  参加記
+                </a>
+                はこちらからご覧になれます。
+              </p>
+            </VerticalTimelineElement>
+
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              date="September 2020"
+              iconStyle={{
+                background: "rgb(16, 204, 82)",
+                color: "#fff",
+              }}
+            >
+              <h2
+                className="vertical-timeline-element-title"
+                style={{ textAlign: "left" }}
+              >
+                Amazom Web Services サマーインターン 参加
+              </h2>
+              <p style={{ textAlign: "left" }}>
+                Web アプリケーションのトラブルシューティングを行いました。
+              </p>
+            </VerticalTimelineElement>
+
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              date="September 2020"
+              iconStyle={{
+                background: "rgb(16, 204, 82)",
+                color: "#fff",
+              }}
+            >
+              <h2
+                className="vertical-timeline-element-title"
+                style={{ textAlign: "left" }}
+              >
+                ハウテレビジョン サマーインターン 参加
+              </h2>
+              <p style={{ textAlign: "left" }}>
+                React + Redux + Golang + Docker を使って
+                <a
+                  href="https://gaishishukatsu.com/"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  外資就活
+                </a>
+                の追加機能の開発をチームで行いました。
+              </p>
+            </VerticalTimelineElement>
           </VerticalTimeline>
         </div>
       </Content>

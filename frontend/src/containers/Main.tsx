@@ -47,6 +47,12 @@ class Main extends React.Component {
             "HTML, CSS, TypeScript, Angular, Python, Django Rest Frameworkで作成",
         },
         {
+          tagName: this.makeATag("https://www.hk-41.work/", "Portfolio"),
+          title: "私のポートフォリオ(このページ)",
+          body:
+            "React, Ant Design, EC2, Route53, Elastic IP, Docker, docker-compose で自作",
+        },
+        {
           tagName: this.makeATag(
             "https://dilmnqvovpnmlib.github.io/dilmnqvovpnmlib/",
             "Portfolio"
