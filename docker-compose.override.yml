@@ -1,15 +1,15 @@
 version: "3"
 
 services:
-  # https-portal:
-  #   image: steveltn/https-portal:1
-  #   container_name: server
-  #   ports:
-  #     - "80:80"
-  #     - "443:443"
-  #   environment:
-  #     DOMAINS: "www.hk-41.work -> http://frontend:82"
-  #     STAGE: "production"
+  https-portal:
+    image: steveltn/https-portal:1
+    container_name: server
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DOMAINS: "www.hk-41.work -> http://frontend:82"
+      STAGE: "production"
   frontend:
     build:
       context: ./frontend
