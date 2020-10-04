@@ -3,6 +3,13 @@
 ## 概要
 
 - このリポジトリはポートフォリオのソースコードです。
+- GitHub Pages でデプロイしたポートフォリオは [こちら](dilmnqvovpnmlib.github.io/dilmnqvovpnmlib/) になります。
+
+## 使用した技術
+
+- AWS の `EC2` に `Route53` と `Elastic IP` を使用し、 `Docker` と `docker-compose` を使ってデプロイしています。
+- フロントエンドには `React` を使用しています。
+- ブラウザから修正できるように、バックエンドに `Django Rest Framework` を使って管理画面を作成している途中です。
 
 ## 起動
 
@@ -18,7 +25,7 @@ yarn start
 
 #### 開発環境
 
-- 開発環境では、以下の手順でアプリケーションを起動します。
+- 開発環境では、以下の手順でアプリケーションを起動します。`localhost:81` でアプリケーションは起動します。
 
 ```bash
 make dev-build
