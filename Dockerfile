@@ -31,10 +31,10 @@ RUN apk add nginx && \
 
 RUN mkdir /app
 WORKDIR /app
-COPY package.json yarn.lock ./
-RUN yarn install --production --no-progress
+# COPY package.json yarn.lock ./
+# RUN yarn install --production --no-progress
 COPY . .
-RUN yarn build
+# RUN yarn build
 
 RUN sed -i 's/#rc_sys=""/rc_sys="lxc"/g' /etc/rc.conf
 RUN echo 'rc_provide="loopback net"' >> /etc/rc.conf
