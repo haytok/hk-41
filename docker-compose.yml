@@ -6,6 +6,6 @@ services:
     container_name: app
     restart: always
     ports:
-      - "3001:3000"
+      - "80:80"
     volumes:
       - .:/app

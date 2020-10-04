@@ -1,0 +1,22 @@
+img {
+  border-radius: 50%;
+  width: 180px;
+  height: 180px;
+}
+
+td {
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+th {
+  padding-right: 30px;
+}
+
+a {
+  color: black;
+}
+
+h1 {
+  font-size: 32px;
+}
