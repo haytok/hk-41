@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import "../App.css";
-import { Menu, Layout, Tag, Avatar, Popover } from "antd";
+import { Menu, Layout, Tag, Avatar, Popover, BackTop } from "antd";
 import "antd/es/menu/style";
 import {
   HomeOutlined,
@@ -10,6 +10,7 @@ import {
   GithubOutlined,
   GitlabOutlined,
   TwitterOutlined,
+  VerticalAlignTopOutlined,
 } from "@ant-design/icons";
 import {
   VerticalTimeline,
@@ -18,6 +19,10 @@ import {
 import "react-vertical-timeline-component/style.min.css";
 import { createFromIconfontCN } from "@ant-design/icons";
 
+import { WorksData, WorkContents } from "../domain/works-model";
+import { SkillContents } from "../domain/skills-model";
+import { ArticleData, ArticleContents } from "../domain/articles-model";
+import { ResarchContents } from "../domain/research-model";
 import Icon from "../static/images/images.jpg";
 import "../static/css/main.css";
 
@@ -26,38 +31,11 @@ const IconFont = createFromIconfontCN({
   scriptUrl: "//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js",
 });
 
-interface worksDataType {
-  tagName: JSX.Element;
-  title: string;
-  body: string;
-}
-
-interface worksType {
-  key: string;
-  value: string;
-  data: Array<worksDataType>;
-}
-
-interface skillsContensType {
-  key: string;
-  value: string;
-  data: Array<string>;
-}
-
-interface researchContensType {
-  key: string;
-  value: string;
-  data: Array<string>;
-}
-
-interface stateType {
-  current: string;
-}
-
 interface Props {
-  works: worksType;
-  skillsContens: skillsContensType;
-  researchContens: researchContensType;
+  works: WorkContents;
+  skillsContens: SkillContents;
+  articles: ArticleContents;
+  researchContens: ResarchContents;
 }
 
 interface StyledCardProps {
@@ -71,11 +49,32 @@ const Title = styled.table<StyledCardProps>`
   margin-right: auto;
 `;
 
+const BackTopContent = styled.div<StyledCardProps>`
+  height: 40px;
+  width: 40px;
+  lineheight: 40px;
+  border-radius: 50%;
+  background-color: white;
+  color: #1890ff;
+  text-align: center;
+  font-size: 24px;
+  border-color: #1890ff;
+`;
+
 export const MainComponent = ({
   works,
   skillsContens,
+  articles,
   researchContens,
 }: Props) => {
+  const [current, handleClick] = useState("about");
+  const toggle = (e: any): void => {
+    handleClick(e.key);
+    const element: any = document.getElementById(e.key);
+    const rect = element.getBoundingClientRect();
+    const elemtop = rect.top + window.pageYOffset;
+    document.documentElement.scrollTop = elemtop - 75;
+  };
   const makeHeader = () => {
     return (
       <Header
@@ -86,35 +85,39 @@ export const MainComponent = ({
         }}
       >
         <Menu
-          // onClick={this.handleClick}
-          // selectedKeys={[this.state.current]}
+          onClick={toggle}
+          selectedKeys={[current]}
           mode="horizontal"
           theme="dark"
           style={{ lineHeight: "64px" }}
         >
           <Menu.Item key="about">
             <HomeOutlined />
-            <a href="/">About</a>
+            <a href="#about">About</a>
           </Menu.Item>
           <Menu.Item key="experiences">
             <AppstoreOutlined />
-            <a href="/">Experiences</a>
+            <a href="#experience">Experiences</a>
           </Menu.Item>
           <Menu.Item key="works">
             <AppstoreOutlined />
-            <a href="/">Works</a>
+            <a href="#works">Works</a>
           </Menu.Item>
           <Menu.Item key="skills">
             <AppstoreOutlined />
-            <a href="/">Skills</a>
+            <a href="#skills">Skills</a>
+          </Menu.Item>
+          <Menu.Item key="articles">
+            <AppstoreOutlined />
+            <a href="#articles">Articles</a>
           </Menu.Item>
           <Menu.Item key="research">
             <AppstoreOutlined />
-            <a href="/">Research Keywords</a>
+            <a href="#research">Research Keywords</a>
           </Menu.Item>
           <Menu.Item key="programming">
             <AppstoreOutlined />
-            <a href="/">Competition Programming</a>
+            <a href="#programming">Competition Programming</a>
           </Menu.Item>
         </Menu>
       </Header>
@@ -142,7 +145,7 @@ export const MainComponent = ({
           <Title>
             <tr>
               <th align="left">Name</th>
-              <td align="left">Kiwata Hayato</td>
+              <td align="left">Hayato Kiwata</td>
             </tr>
             <tr>
               <th align="left">University</th>
@@ -531,10 +534,10 @@ export const MainComponent = ({
       </Content>
     );
   };
-  const content = (body: any) => (
+  const content = (body: string) => (
     <div style={{ textAlign: "center" }}>{body}</div>
   );
-  const makeWorks = (item: any) => {
+  const makeWorks = (item: WorkContents) => {
     return (
       <Content
         id={item.key}
@@ -547,7 +550,7 @@ export const MainComponent = ({
           <h1 style={{ textAlign: "center" }}>{item.value}</h1>
         </div>
         <div style={{ textAlign: "center" }}>
-          {item.data.map((item: any) => (
+          {item.data.map((item: WorksData) => (
             <Popover
               content={content(item.body)}
               title={item.title}
@@ -564,7 +567,7 @@ export const MainComponent = ({
       </Content>
     );
   };
-  const makeTagContents = (item: any) => {
+  const makeTagContents = (item: SkillContents) => {
     return (
       <Content
         id={item.key}
@@ -577,8 +580,31 @@ export const MainComponent = ({
           <h1 style={{ textAlign: "center" }}>{item.value}</h1>
         </div>
         <div style={{ textAlign: "center" }}>
-          {item.data.map((item: any) => (
+          {item.data.map((item: string) => (
             <Tag color="processing">{item}</Tag>
+          ))}
+        </div>
+      </Content>
+    );
+  };
+  const makeArticles = (item: ArticleContents) => {
+    return (
+      <Content
+        id={item.key}
+        style={{ margin: "24px 16px 0", overflow: "initial" }}
+      >
+        <div
+          className="site-layout-background"
+          style={{ padding: 24, textAlign: "center" }}
+        >
+          <h1 style={{ textAlign: "center" }}>{item.value}</h1>
+        </div>
+        <div style={{ textAlign: "center" }}>
+          {item.data.map((item: ArticleData) => (
+            <Tag color="processing">
+              {item.tagName}&nbsp;
+              <IconFont type="icon-tuichu" />
+            </Tag>
           ))}
         </div>
       </Content>
@@ -630,11 +656,17 @@ export const MainComponent = ({
           {makeExperiences()}
           {makeWorks(works)}
           {makeTagContents(skillsContens)}
+          {makeArticles(articles)}
           {makeTagContents(researchContens)}
           {makeProgramming()}
           {makeFooter()}
         </Layout>
       </Layout>
+      <BackTop>
+        <BackTopContent>
+          <VerticalAlignTopOutlined />
+        </BackTopContent>
+      </BackTop>
     </React.Fragment>
   );
 };
