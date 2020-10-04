@@ -2,7 +2,7 @@
 
 ## 概要
 
-- このリポジトリはポートフォリオ (https://www.hk-41.work/) のソースコードです。
+- このリポジトリは[ポートフォリオ](https://www.hk-41.work/) のソースコードです。
 - GitHub Pages でデプロイしたポートフォリオは [こちら](dilmnqvovpnmlib.github.io/dilmnqvovpnmlib/) になります。
 
 ## 使用した技術
