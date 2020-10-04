@@ -1,4 +1,4 @@
-# 開発環境 ver
+# 開発環境
 FROM node:12-alpine
 
 ENV CI=true

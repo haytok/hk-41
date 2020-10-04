@@ -1,4 +1,4 @@
-# 本番 ver
+# 本番環境
 FROM node:12-alpine
 
 MAINTAINER dilmnqvovpnmlib <simplelpmis6@gmail.com>
@@ -6,7 +6,7 @@ MAINTAINER dilmnqvovpnmlib <simplelpmis6@gmail.com>
 ENV TZ Asia/Tokyo
 ENV CI=true
 
-# update
+# Update
 RUN apk update
 RUN apk add nginx && \
   apk add vim && \
@@ -20,6 +20,7 @@ RUN mkdir build
 COPY ./build ./build
 COPY ./docker-entrypoint.sh .
 
+# Setup Nginx
 RUN sed -i 's/#rc_sys=""/rc_sys="lxc"/g' /etc/rc.conf
 RUN echo 'rc_provide="loopback net"' >> /etc/rc.conf
 RUN sed -i 's/^#\(rc_logger="YES"\)$/\1/' /etc/rc.conf
@@ -30,7 +31,7 @@ RUN sed -i 's/cgroup_add_service /# cgroup_add_service /g' /lib/rc/sh/openrc-run
 RUN rc-status
 RUN touch /run/openrc/softlevel
 
-# copy configuration files.
+# Copy configuration files.
 COPY ./conf/supervisord.conf /etc/supervisord.conf
 COPY ./conf/default.conf /etc/nginx/conf.d/default.conf
 
