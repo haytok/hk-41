@@ -8,7 +8,7 @@
 ## 使用した技術
 
 - AWS の `EC2` に `Route53` と `Elastic IP` を使用し、 `Docker` と `docker-compose` を使ってデプロイしています。
-- フロントエンドには `React` を使用しています。
+- フロントエンドには `React` と `styled-components` を使用しています。
 - ブラウザから修正できるように、バックエンドに `Django Rest Framework` を使って管理画面を作成している途中です。
 
 ## 起動
