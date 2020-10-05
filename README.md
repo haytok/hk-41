@@ -2,7 +2,7 @@
 
 ## 概要
 
-- このリポジトリはポートフォリオのソースコードです。
+- このリポジトリは [ポートフォリオ](https://www.hk-41.work/) のソースコードです。
 - GitHub Pages でデプロイしたポートフォリオは [こちら](dilmnqvovpnmlib.github.io/dilmnqvovpnmlib/) になります。
 
 ## 使用した技術
@@ -37,6 +37,8 @@ make dev-up
 ```bash
 make dev-down
 ```
+
+- デプロイする際に build したファイルを push するのを忘れないようにしましょう。
 
 #### 本番環境
 
