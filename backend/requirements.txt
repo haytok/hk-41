@@ -1,0 +1,6 @@
+ipython
+django
+djangorestframework
+flake8
+isort
+uwsgi
