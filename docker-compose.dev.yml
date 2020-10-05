@@ -9,3 +9,12 @@ services:
       - "81:3000"
     volumes:
       - ./frontend:/app
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ./docker/dev/Dockerfile
+    command: python ./backend/manage.py runserver 0.0.0.0:8000
+    ports:
+      - "82:8000"
+    volumes:
+      - ./backend:/app
