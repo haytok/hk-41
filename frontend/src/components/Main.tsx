@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import "../App.css";
@@ -31,13 +31,6 @@ const IconFont = createFromIconfontCN({
   scriptUrl: "//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js",
 });
 
-interface Props {
-  works: WorkContents;
-  skillsContens: SkillContents;
-  articles: ArticleContents;
-  researchContens: ResarchContents;
-}
-
 interface StyledCardProps {
   border?: number;
   textAlign?: string;
@@ -61,12 +54,28 @@ const BackTopContent = styled.div<StyledCardProps>`
   border-color: #1890ff;
 `;
 
+interface Props {
+  works: WorkContents;
+  skillsContens: SkillContents;
+  articles: ArticleContents;
+  researchContens: ResarchContents;
+  onGetSkillsAction: () => void;
+}
+
 export const MainComponent = ({
   works,
   skillsContens,
   articles,
   researchContens,
+  onGetSkillsAction,
 }: Props) => {
+  // hooks
+  useEffect(() => {
+    onGetSkillsAction();
+    // eslint-disable-next-line
+  }, []);
+
+  //
   const [current, handleClick] = useState("about");
   const toggle = (e: any): void => {
     handleClick(e.key);

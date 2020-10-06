@@ -4,3 +4,4 @@ djangorestframework
 flake8
 isort
 uwsgi
+django-cors-headers
