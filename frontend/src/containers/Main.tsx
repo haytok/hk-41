@@ -1,12 +1,16 @@
 import React from "react";
 
-import { WorkContents } from "../domain/works-model";
-import { SkillContents } from "../domain/skills-model";
-import { ResarchContents } from "../domain/research-model";
-import { ArticleContents } from "../domain/articles-model";
 import { MainComponent } from "../components/Main";
 
-export const Main = () => {
+import { WorkContents } from "../domain/works-model";
+import { ResarchContents } from "../domain/research-model";
+import { ArticleContents } from "../domain/articles-model";
+
+import { getSkillsAction } from "../application-actions";
+import { useActionDispatch } from "../hooks/use-action-dispatch";
+import { useSkillsGetter } from "../stores/skills-query";
+
+export const Main = (): JSX.Element => {
   const makeATag = (link: string, body: string): JSX.Element => (
     <a href={link} target="_blank" rel="noreferrer noopener">
       {body}
@@ -54,23 +58,6 @@ export const Main = () => {
       },
     ],
   };
-  const skillsContens: SkillContents = {
-    key: "skills",
-    value: "Skills",
-    data: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "TypeScript",
-      "Python",
-      "React",
-      "Vue",
-      "Angular",
-      "Django Rest Framework",
-      "Git",
-      "Docker",
-    ],
-  };
   const articles: ArticleContents = {
     key: "articles",
     value: "Articles",
@@ -106,12 +93,17 @@ export const Main = () => {
       "ネットワーク",
     ],
   };
+  // hooks
+  const skillsContens = useSkillsGetter();
+  const dispatchGetSkillsAction = useActionDispatch(getSkillsAction);
   return (
     <MainComponent
       works={works}
       skillsContens={skillsContens}
       articles={articles}
       researchContens={researchContens}
+      // hooks
+      onGetSkillsAction={dispatchGetSkillsAction}
     />
   );
 };
