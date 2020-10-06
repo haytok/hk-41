@@ -18,6 +18,7 @@ from django.urls import include, path
 from rest_framework import routers
 
 urlpatterns = [
+    path('api/', include('api.urls')),
     path('skills/', include('skills.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
