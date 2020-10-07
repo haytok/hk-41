@@ -12,7 +12,7 @@ import { BsNewspaper, BsChat } from "react-icons/bs";
 import { MdWebAsset, MdComputer } from "react-icons/md";
 import { FaDonate, FaServer, FaShoppingCart } from "react-icons/fa";
 
-import { Experience } from "../domain/experiences-domain";
+import { Experience, Experiences } from "../domain/experiences-domain";
 import {
   BACHELOR,
   MASTER,
@@ -100,7 +100,7 @@ interface TimelineElementProps {
 }
 
 interface Props {
-  experiences: Array<Experience>;
+  experiences: Experiences;
 }
 
 const TimelineElement = ({ experience }: TimelineElementProps): JSX.Element => {
@@ -128,16 +128,16 @@ const TimelineElement = ({ experience }: TimelineElementProps): JSX.Element => {
 export const ExperiencesElement = ({ experiences }: Props): JSX.Element => {
   return (
     <Content
-      id="experiences"
+      id={experiences.key}
       style={{ margin: "24px 16px 0", overflow: "initial" }}
     >
       <div
         className="site-layout-background"
         style={{ padding: 24, textAlign: "center" }}
       >
-        <Title>Experiences</Title>
+        <Title>{experiences.value}</Title>
         <VerticalTimeline>
-          {experiences.map((experience) => (
+          {experiences.data.map((experience: Experience) => (
             <TimelineElement experience={experience} />
           ))}
         </VerticalTimeline>

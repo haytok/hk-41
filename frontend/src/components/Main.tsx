@@ -3,7 +3,7 @@ import { Layout } from "antd";
 import "antd/es/menu/style";
 import "../App.css";
 
-import { Experience } from "../domain/experiences-domain";
+import { Experiences } from "../domain/experiences-domain";
 import { WorkContents } from "../domain/works-model";
 import { SkillContents } from "../domain/skills-model";
 import { ArticleContents } from "../domain/articles-model";
@@ -21,7 +21,7 @@ import { TagsElement } from "./TagsElement";
 import "../static/css/main.css";
 
 interface Props {
-  experiences: Array<Experience>;
+  experiences: Experiences;
   works: WorkContents;
   skillsContens: SkillContents;
   articles: ArticleContents;

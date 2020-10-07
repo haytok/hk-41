@@ -5,3 +5,9 @@ export interface Experience {
   title: string | JSX.Element;
   body?: string | JSX.Element;
 }
+
+export interface Experiences {
+  key: string;
+  value: string;
+  data: Array<Experience>;
+}
