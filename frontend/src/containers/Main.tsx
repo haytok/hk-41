@@ -1,58 +1,49 @@
 import React from "react";
 
 import { MainComponent } from "../components/Main";
-
 import { WorkContents } from "../domain/works-model";
 import { ResarchContents } from "../domain/research-model";
 import { ArticleContents } from "../domain/articles-model";
-
 import { getSkillsAction } from "../application-actions";
 import { useActionDispatch } from "../hooks/use-action-dispatch";
 import { useSkillsGetter } from "../stores/skills-query";
+import { getExperiencesAction } from "../application-actions/experiences-actions";
+import { useExperiencesGetter } from "../stores/experiences-query";
 
 export const Main = (): JSX.Element => {
-  const makeATag = (link: string, body: string): JSX.Element => (
-    <a href={link} target="_blank" rel="noreferrer noopener">
-      {body}
-    </a>
-  );
   const works: WorkContents = {
     key: "works",
     value: "Works",
     data: [
       {
-        tagName: makeATag(
-          "https://www.miraikikin.osaka-u.ac.jp/donation/application",
-          "大阪大学未来基金"
-        ),
+        url: "https://www.miraikikin.osaka-u.ac.jp/donation/application",
+        content: "大阪大学未来基金",
         title: "大阪大学に寄付をするためのシステム",
         body:
           "HTML, CSS, TypeScript, Angular, Python, Django Rest Frameworkで作成",
       },
       {
-        tagName: makeATag("https://www.hk-41.work/", "Portfolio"),
+        url: "https://www.hk-41.work/",
+        content: "Portfolio",
         title: "私のポートフォリオ(このページ)",
         body:
           "React, Ant Design, EC2, Route53, Elastic IP, Docker, docker-compose で自作",
       },
       {
-        tagName: makeATag(
-          "https://dilmnqvovpnmlib.github.io/dilmnqvovpnmlib/",
-          "Portfolio"
-        ),
+        url: "https://dilmnqvovpnmlib.github.io/dilmnqvovpnmlib/",
+        content: "Portfolio",
         title: "私のポートフォリオ(このページ)",
         body: "React, Ant Design, GitHub Pagesで作成",
       },
       {
-        tagName: makeATag("https://store.artill.jp/", "Artill ECサイト"),
+        url: "https://store.artill.jp/",
+        content: "Artill ECサイト",
         title: "アート作品を売買するためのECサイト",
         body: "React, Reduxで作成中",
       },
       {
-        tagName: makeATag(
-          "https://baseball-data-park.com/",
-          "Baseball Data Park"
-        ),
+        url: "https://baseball-data-park.com/",
+        content: "Baseball Data Park",
         title: "野球に関する情報情報を集めたサイト",
         body: "React, Redux, Firebase, Python + Scrapingで作成中",
       },
@@ -63,22 +54,18 @@ export const Main = (): JSX.Element => {
     value: "Articles",
     data: [
       {
-        tagName: makeATag(
-          "https://dilmnqvo.hatenablog.com/entry/2020/09/11/182152",
-          "はてなインターン2020 に参加してきた"
-        ),
+        url: "https://dilmnqvo.hatenablog.com/entry/2020/09/11/182152",
+        content: "はてなインターン2020 に参加してきた",
       },
       {
-        tagName: makeATag(
-          "https://qiita.com/HK-41/items/6f9ddf5978359779bb57",
-          "RaspberryPiにDockerを使ってNginxでリバースプロキシを動かしてみた"
-        ),
+        url: "https://qiita.com/HK-41/items/6f9ddf5978359779bb57",
+        content:
+          "RaspberryPiにDockerを使ってNginxでリバースプロキシを動かしてみた",
       },
       {
-        tagName: makeATag(
-          "https://qiita.com/HK-41/items/72fd3f4d2b0b05e024c9",
-          "Raspberry Pi 3 Model B+にNginxとuWSGIを使ってFlaskを動かしてみた"
-        ),
+        url: "https://qiita.com/HK-41/items/72fd3f4d2b0b05e024c9",
+        content:
+          "Raspberry Pi 3 Model B+にNginxとuWSGIを使ってFlaskを動かしてみた",
       },
     ],
   };
@@ -93,16 +80,22 @@ export const Main = (): JSX.Element => {
       "ネットワーク",
     ],
   };
-  // hooks
+  // Get stores
   const skillsContens = useSkillsGetter();
+  const experiences = useExperiencesGetter();
+
+  // Actions
   const dispatchGetSkillsAction = useActionDispatch(getSkillsAction);
+  const dispatchGetExperiencesAction = useActionDispatch(getExperiencesAction);
   return (
     <MainComponent
+      experiences={experiences}
       works={works}
       skillsContens={skillsContens}
       articles={articles}
       researchContens={researchContens}
-      // hooks
+      // Actions
+      onGetExperiencesAction={dispatchGetExperiencesAction}
       onGetSkillsAction={dispatchGetSkillsAction}
     />
   );
