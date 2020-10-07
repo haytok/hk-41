@@ -1,5 +1,6 @@
 export interface ArticleData {
-  tagName: JSX.Element;
+  url: string;
+  content: string;
 }
 
 export interface ArticleContents {

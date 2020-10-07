@@ -1,1 +1,1 @@
-export const BASE_REQUEST_PATH = "http://localhost:82";
+export const BASE_REQUEST_PATH = "http://localhost:82/api/";

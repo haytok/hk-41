@@ -1,5 +1,6 @@
-export interface WorksData {
-  tagName: JSX.Element;
+export interface WorkData {
+  url: string;
+  content: string;
   title: string;
   body: string;
 }
@@ -7,5 +8,5 @@ export interface WorksData {
 export interface WorkContents {
   key: string;
   value: string;
-  data: Array<WorksData>;
+  data: Array<WorkData>;
 }
