@@ -26,6 +26,8 @@ interface Props {
   skillsContens: SkillContents;
   articles: ArticleContents;
   researchContens: ResarchContents;
+  // Actions
+  onGetExperiencesAction: () => void;
   onGetSkillsAction: () => void;
 }
 
@@ -35,10 +37,13 @@ export const MainComponent = ({
   skillsContens,
   articles,
   researchContens,
+  // Actions
+  onGetExperiencesAction,
   onGetSkillsAction,
 }: Props) => {
   // hooks
   useEffect(() => {
+    onGetExperiencesAction();
     onGetSkillsAction();
     // eslint-disable-next-line
   }, []);

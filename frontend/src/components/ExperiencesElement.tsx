@@ -95,6 +95,10 @@ const getIcon = (key: string): JSX.Element => {
   }
 };
 
+interface DisplayContentProps {
+  value: any;
+}
+
 interface TimelineElementProps {
   experience: Experience;
 }
@@ -102,6 +106,15 @@ interface TimelineElementProps {
 interface Props {
   experiences: Experiences;
 }
+
+const unescapeHTML = (escapedHtml: any): any => {
+  const doc = new DOMParser().parseFromString(escapedHtml, "text/html");
+  return doc.documentElement.textContent;
+};
+
+const DisplayContent = ({ value }: DisplayContentProps): JSX.Element => (
+  <span dangerouslySetInnerHTML={{ __html: unescapeHTML(value) }} />
+);
 
 const TimelineElement = ({ experience }: TimelineElementProps): JSX.Element => {
   return (
@@ -116,10 +129,12 @@ const TimelineElement = ({ experience }: TimelineElementProps): JSX.Element => {
         className="vertical-timeline-element-title"
         style={{ textAlign: "left" }}
       >
-        {experience.title}
+        <DisplayContent value={experience.title} />
       </h2>
       {experience.body && (
-        <p style={{ textAlign: "left" }}>{experience.body}</p>
+        <p style={{ textAlign: "left" }}>
+          <DisplayContent value={experience.body} />
+        </p>
       )}
     </VerticalTimelineElement>
   );
