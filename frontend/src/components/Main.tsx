@@ -7,7 +7,7 @@ import { Experiences } from "../domain/experiences-domain";
 import { Works } from "../domain/works-model";
 import { Skills } from "../domain/skills-model";
 import { Articles } from "../domain/articles-model";
-import { ResarchContents } from "../domain/research-model";
+import { ResearchContents } from "../domain/research-model";
 
 import { HeaderElement } from "../components/HeaderElemet";
 import { AboutElement } from "../components/AboutElement";
@@ -25,12 +25,13 @@ interface Props {
   works: Works;
   skills: Skills;
   articles: Articles;
-  researchContens: ResarchContents;
+  researchContens: ResearchContents;
   // Actions
   onGetExperiencesAction: () => void;
   onGetWorksAction: () => void;
   onGetSkillsAction: () => void;
   onGetArticlesAction: () => void;
+  onGetResearchContentsAction: () => void;
 }
 
 export const MainComponent = ({
@@ -44,6 +45,7 @@ export const MainComponent = ({
   onGetWorksAction,
   onGetSkillsAction,
   onGetArticlesAction,
+  onGetResearchContentsAction,
 }: Props) => {
   // hooks
   useEffect(() => {
@@ -51,6 +53,7 @@ export const MainComponent = ({
     onGetWorksAction();
     onGetSkillsAction();
     onGetArticlesAction();
+    onGetResearchContentsAction();
     // eslint-disable-next-line
   }, []);
 
@@ -76,7 +79,7 @@ export const MainComponent = ({
           <WorksElement works={works} />
           {TagsElement<Skills>(skills)}
           <ArticleElement articles={articles} />
-          {TagsElement<ResarchContents>(researchContens)}
+          {TagsElement<ResearchContents>(researchContens)}
           <ProgramminElement />
           <FooterElement />
         </Layout>
