@@ -7,10 +7,6 @@ import { Skills } from "../domain/skills-model";
 import { Articles } from "../domain/articles-model";
 import { ResearchContents } from "../domain/research-model";
 
-// axios.defaults.headers.get["Access-Control-Allow-Origin"] = "*";
-// axios.defaults.headers.get["Content-Type"] =
-//   "application/x-www-form-urlencoded";
-
 type DataTypes = Experiences | Works | Skills | Articles | ResearchContents;
 
 export const getDataAPI = <T extends DataTypes>(apiType: string) => {
