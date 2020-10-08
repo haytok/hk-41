@@ -5,7 +5,7 @@ MAINTAINER dilmnqvovpnmlib <simplelpmis6@gmail.com>
 
 ENV TZ Asia/Tokyo
 ENV CI=true
-ENV REACT_APP_MODE=dev
+ENV REACT_APP_MODE=prod
 
 # Update
 RUN apk update
