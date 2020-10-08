@@ -5,12 +5,14 @@ services:
     build:
       context: ./frontend
       dockerfile: ./docker/dev/Dockerfile
+      args:
+        REACT_APP_MODE: $REACT_APP_MODE
     ports:
       - "81:3000"
     volumes:
       - ./frontend:/app
-    environment:
-      - REACT_APP_MODE=dev
+    # environment:
+    #   - REACT_APP_MODE=dev
   backend:
     build:
       context: ./backend

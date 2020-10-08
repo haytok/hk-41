@@ -14,10 +14,12 @@ services:
     build:
       context: ./frontend
       dockerfile: ./docker/prod/Dockerfile
+      args:
+        REACT_APP_MODE: $REACT_APP_MODE
     ports:
       - "80:80"
-    environment:
-      - REACT_APP_MODE=prod
+    # environment:
+    #   - REACT_APP_MODE=prod
     restart: always
   backend:
     build:
