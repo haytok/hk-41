@@ -1,54 +1,19 @@
 import React from "react";
 
 import { MainComponent } from "../components/Main";
-import { Works } from "../domain/works-model";
 import { ResarchContents } from "../domain/research-model";
 import { ArticleContents } from "../domain/articles-model";
-import { getSkillsAction } from "../application-actions";
+import {
+  getExperiencesAction,
+  getWorksAction,
+  getSkillsAction,
+} from "../application-actions";
 import { useActionDispatch } from "../hooks/use-action-dispatch";
 import { useSkillsGetter } from "../stores/skills-query";
-import { getExperiencesAction } from "../application-actions/experiences-actions";
 import { useExperiencesGetter } from "../stores/experiences-query";
+import { useWorksGetter } from "../stores/works/works-query";
 
 export const Main = (): JSX.Element => {
-  const works: Works = {
-    key: "works",
-    value: "Works",
-    data: [
-      {
-        url: "https://www.miraikikin.osaka-u.ac.jp/donation/application",
-        content: "大阪大学未来基金",
-        title: "大阪大学に寄付をするためのシステム",
-        body:
-          "HTML, CSS, TypeScript, Angular, Python, Django Rest Frameworkで作成",
-      },
-      {
-        url: "https://www.hk-41.work/",
-        content: "Portfolio",
-        title: "私のポートフォリオ(このページ)",
-        body:
-          "React, Ant Design, EC2, Route53, Elastic IP, Docker, docker-compose で自作",
-      },
-      {
-        url: "https://dilmnqvovpnmlib.github.io/dilmnqvovpnmlib/",
-        content: "Portfolio",
-        title: "私のポートフォリオ(このページ)",
-        body: "React, Ant Design, GitHub Pagesで作成",
-      },
-      {
-        url: "https://store.artill.jp/",
-        content: "Artill ECサイト",
-        title: "アート作品を売買するためのECサイト",
-        body: "React, Reduxで作成中",
-      },
-      {
-        url: "https://baseball-data-park.com/",
-        content: "Baseball Data Park",
-        title: "野球に関する情報情報を集めたサイト",
-        body: "React, Redux, Firebase, Python + Scrapingで作成中",
-      },
-    ],
-  };
   const articles: ArticleContents = {
     key: "articles",
     value: "Articles",
@@ -81,12 +46,14 @@ export const Main = (): JSX.Element => {
     ],
   };
   // Get stores
-  const skills = useSkillsGetter();
   const experiences = useExperiencesGetter();
+  const works = useWorksGetter();
+  const skills = useSkillsGetter();
 
   // Actions
-  const dispatchGetSkillsAction = useActionDispatch(getSkillsAction);
   const dispatchGetExperiencesAction = useActionDispatch(getExperiencesAction);
+  const dispatchGetWorksAction = useActionDispatch(getWorksAction);
+  const dispatchGetSkillsAction = useActionDispatch(getSkillsAction);
   return (
     <MainComponent
       experiences={experiences}
@@ -96,6 +63,7 @@ export const Main = (): JSX.Element => {
       researchContens={researchContens}
       // Actions
       onGetExperiencesAction={dispatchGetExperiencesAction}
+      onGetWorksAction={dispatchGetWorksAction}
       onGetSkillsAction={dispatchGetSkillsAction}
     />
   );
