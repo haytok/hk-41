@@ -1,7 +1,7 @@
 import { combineReducers, createAction, createReducer } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 
-import { Experiences } from "../domain/experiences-domain";
+import { Experiences } from "../../domain/experiences-domain";
 
 interface $addExperiencesActionPayload {
   payload: {

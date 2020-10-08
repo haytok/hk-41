@@ -1,9 +1,9 @@
 import { Dispatch, Middleware, MiddlewareAPI } from "redux";
 
-import { RootState } from "./root-store";
-import { Experiences } from "../domain/experiences-domain";
-import { getExperiencesAPI } from "../services/get-experiences-api-service";
-import { getExperiencesAction } from "../application-actions";
+import { RootState } from "../root-store";
+import { Experiences } from "../../domain/experiences-domain";
+import { getExperiencesAPI } from "../../services/get-experiences-api-service";
+import { getExperiencesAction } from "../../application-actions";
 import { $addExperiencesAction } from "./experiences-read-store";
 
 export const experiencesStoreOnMiddleware: Middleware = ({

@@ -1,9 +1,9 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
-import { rootExperiencesReducer } from "./experiences-read-store";
-import { rootSkillsReducer } from "./skills-read-store";
-import { experiencesStoreOnMiddleware } from "./experiences-store";
-import { skillsStoreOnMiddleware } from "./skills-store";
+import { rootExperiencesReducer } from "./experiences/experiences-read-store";
+import { rootSkillsReducer } from "./skills/skills-read-store";
+import { experiencesStoreOnMiddleware } from "./experiences/experiences-store";
+import { skillsStoreOnMiddleware } from "./skills/skills-store";
 import { rootWorksReducer } from "./works/works-read-store";
 import { worksStoreOnMiddleware } from "./works/works-store";
 import { rootArticlesReducer } from "./articles/articles-read-store";

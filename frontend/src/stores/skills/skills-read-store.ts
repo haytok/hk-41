@@ -1,7 +1,7 @@
 import { combineReducers, createAction, createReducer } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 
-import { Skills } from "../domain/skills-model";
+import { Skills } from "../../domain/skills-model";
 
 interface $addSkillsDataActionPayload {
   payload: {

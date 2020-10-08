@@ -9,8 +9,8 @@ import {
   getArticlesAction,
 } from "../application-actions";
 import { useActionDispatch } from "../hooks/use-action-dispatch";
-import { useSkillsGetter } from "../stores/skills-query";
-import { useExperiencesGetter } from "../stores/experiences-query";
+import { useSkillsGetter } from "../stores/skills/skills-query";
+import { useExperiencesGetter } from "../stores/experiences/experiences-query";
 import { useWorksGetter } from "../stores/works/works-query";
 import { useArticlesGetter } from "../stores/articles/articles-query";
 

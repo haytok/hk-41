@@ -1,9 +1,9 @@
 import { Dispatch, Middleware, MiddlewareAPI } from "redux";
 
-import { RootState } from "./root-store";
-import { getSkillsAction } from "../application-actions";
-import { getSkillsAPI } from "../services/get-skills-api-service";
-import { Skills } from "../domain/skills-model";
+import { RootState } from "../root-store";
+import { getSkillsAction } from "../../application-actions";
+import { getSkillsAPI } from "../../services/get-skills-api-service";
+import { Skills } from "../../domain/skills-model";
 import { $addSkillsAction } from "./skills-read-store";
 
 export const skillsStoreOnMiddleware: Middleware = ({
