@@ -1,10 +1,10 @@
-export interface ArticleData {
+export interface Article {
   url: string;
   content: string;
 }
 
-export interface ArticleContents {
+export interface Articles {
   key: string;
   value: string;
-  data: Array<ArticleData>;
+  data: Array<Article>;
 }
