@@ -4,8 +4,9 @@ const getBaseRequestPath = (): string => {
     case "prod":
       return "http://www.hk-41.work:82/api/";
     case "dev":
-    default:
       return "http://localhost:82/api/";
+    default:
+      return "http://www.hk-41.work:82/api/";
   }
 };
 
