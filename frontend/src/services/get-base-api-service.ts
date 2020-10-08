@@ -15,6 +15,11 @@ type DataTypes = Experiences | Works | Skills | Articles | ResearchContents;
 
 export const getDataAPI = <T extends DataTypes>(apiType: string) => {
   const path = `${BASE_REQUEST_PATH}${apiType}`;
+  console.log(
+    "BASE_REQUEST_PATH",
+    BASE_REQUEST_PATH,
+    process.env.REACT_APP_MODE
+  );
   return axios.get(path).then(({ data }: AxiosResponse<T>) => {
     console.log(BASE_REQUEST_PATH, apiType, data);
     return Promise.resolve(data);
