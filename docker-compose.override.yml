@@ -8,12 +8,18 @@ services:
       - "80:80"
       - "443:443"
     environment:
-      DOMAINS: "www.hk-41.work -> http://frontend:82"
+      DOMAINS: "www.hk-41.work -> http://frontend:81"
       STAGE: "production"
   frontend:
     build:
       context: ./frontend
       dockerfile: ./docker/prod/Dockerfile
     ports:
-      - "82:80"
+      - "81:80"
     restart: always
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ./docker/prod/Dockerfile
+    ports:
+      - "82:80"
