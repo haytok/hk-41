@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Layout, Tag, Popover } from "antd";
 import { createFromIconfontCN } from "@ant-design/icons";
 
-import { WorkData, WorkContents } from "../domain/works-model";
+import { Work, Works } from "../domain/works-model";
 import { makeATag } from "../utils/make-a-tag";
 
 const Content = styled(Layout.Content)`
@@ -28,7 +28,7 @@ const content = (body: string) => (
 );
 
 interface Props {
-  works: WorkContents;
+  works: Works;
 }
 
 export const WorksElement = ({ works }: Props): JSX.Element => {
@@ -41,7 +41,7 @@ export const WorksElement = ({ works }: Props): JSX.Element => {
         <Title>{works.value}</Title>
       </div>
       <Body>
-        {works.data.map((work: WorkData) => (
+        {works.data.map((work: Work) => (
           <Popover
             content={content(work.body)}
             title={work.title}

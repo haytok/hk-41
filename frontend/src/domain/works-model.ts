@@ -1,12 +1,12 @@
-export interface WorkData {
+export interface Work {
   url: string;
   content: string;
   title: string;
   body: string;
 }
 
-export interface WorkContents {
+export interface Works {
   key: string;
   value: string;
-  data: Array<WorkData>;
+  data: Array<Work>;
 }

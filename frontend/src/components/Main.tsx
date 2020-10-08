@@ -4,10 +4,10 @@ import "antd/es/menu/style";
 import "../App.css";
 
 import { Experiences } from "../domain/experiences-domain";
-import { WorkContents } from "../domain/works-model";
-import { SkillContents } from "../domain/skills-model";
-import { ArticleContents } from "../domain/articles-model";
-import { ResarchContents } from "../domain/research-model";
+import { Works } from "../domain/works-model";
+import { Skills } from "../domain/skills-model";
+import { Articles } from "../domain/articles-model";
+import { ResearchContents } from "../domain/research-model";
 
 import { HeaderElement } from "../components/HeaderElemet";
 import { AboutElement } from "../components/AboutElement";
@@ -22,29 +22,38 @@ import "../static/css/main.css";
 
 interface Props {
   experiences: Experiences;
-  works: WorkContents;
-  skillsContens: SkillContents;
-  articles: ArticleContents;
-  researchContens: ResarchContents;
+  works: Works;
+  skills: Skills;
+  articles: Articles;
+  researchContens: ResearchContents;
   // Actions
   onGetExperiencesAction: () => void;
+  onGetWorksAction: () => void;
   onGetSkillsAction: () => void;
+  onGetArticlesAction: () => void;
+  onGetResearchContentsAction: () => void;
 }
 
 export const MainComponent = ({
   experiences,
   works,
-  skillsContens,
+  skills,
   articles,
   researchContens,
   // Actions
   onGetExperiencesAction,
+  onGetWorksAction,
   onGetSkillsAction,
+  onGetArticlesAction,
+  onGetResearchContentsAction,
 }: Props) => {
   // hooks
   useEffect(() => {
     onGetExperiencesAction();
+    onGetWorksAction();
     onGetSkillsAction();
+    onGetArticlesAction();
+    onGetResearchContentsAction();
     // eslint-disable-next-line
   }, []);
 
@@ -68,9 +77,9 @@ export const MainComponent = ({
           <AboutElement />
           <ExperiencesElement experiences={experiences} />
           <WorksElement works={works} />
-          {TagsElement<SkillContents>(skillsContens)}
+          {TagsElement<Skills>(skills)}
           <ArticleElement articles={articles} />
-          {TagsElement<ResarchContents>(researchContens)}
+          {TagsElement<ResearchContents>(researchContens)}
           <ProgramminElement />
           <FooterElement />
         </Layout>
