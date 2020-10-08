@@ -2,38 +2,19 @@ import React from "react";
 
 import { MainComponent } from "../components/Main";
 import { ResarchContents } from "../domain/research-model";
-import { ArticleContents } from "../domain/articles-model";
 import {
   getExperiencesAction,
   getWorksAction,
   getSkillsAction,
+  getArticlesAction,
 } from "../application-actions";
 import { useActionDispatch } from "../hooks/use-action-dispatch";
 import { useSkillsGetter } from "../stores/skills-query";
 import { useExperiencesGetter } from "../stores/experiences-query";
 import { useWorksGetter } from "../stores/works/works-query";
+import { useArticlesGetter } from "../stores/articles/articles-query";
 
 export const Main = (): JSX.Element => {
-  const articles: ArticleContents = {
-    key: "articles",
-    value: "Articles",
-    data: [
-      {
-        url: "https://dilmnqvo.hatenablog.com/entry/2020/09/11/182152",
-        content: "はてなインターン2020 に参加してきた",
-      },
-      {
-        url: "https://qiita.com/HK-41/items/6f9ddf5978359779bb57",
-        content:
-          "RaspberryPiにDockerを使ってNginxでリバースプロキシを動かしてみた",
-      },
-      {
-        url: "https://qiita.com/HK-41/items/72fd3f4d2b0b05e024c9",
-        content:
-          "Raspberry Pi 3 Model B+にNginxとuWSGIを使ってFlaskを動かしてみた",
-      },
-    ],
-  };
   const researchContens: ResarchContents = {
     key: "research",
     value: "Research Keywords",
@@ -49,11 +30,13 @@ export const Main = (): JSX.Element => {
   const experiences = useExperiencesGetter();
   const works = useWorksGetter();
   const skills = useSkillsGetter();
+  const articles = useArticlesGetter();
 
   // Actions
   const dispatchGetExperiencesAction = useActionDispatch(getExperiencesAction);
   const dispatchGetWorksAction = useActionDispatch(getWorksAction);
   const dispatchGetSkillsAction = useActionDispatch(getSkillsAction);
+  const dispatchGetArticlesAction = useActionDispatch(getArticlesAction);
   return (
     <MainComponent
       experiences={experiences}
@@ -65,6 +48,7 @@ export const Main = (): JSX.Element => {
       onGetExperiencesAction={dispatchGetExperiencesAction}
       onGetWorksAction={dispatchGetWorksAction}
       onGetSkillsAction={dispatchGetSkillsAction}
+      onGetArticlesAction={dispatchGetArticlesAction}
     />
   );
 };

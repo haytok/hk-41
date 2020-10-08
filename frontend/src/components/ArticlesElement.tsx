@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Layout, Tag } from "antd";
 import { createFromIconfontCN } from "@ant-design/icons";
 
-import { ArticleContents, ArticleData } from "../domain/articles-model";
+import { Article, Articles } from "../domain/articles-model";
 import { makeATag } from "../utils/make-a-tag";
 
 const Content = styled(Layout.Content)`
@@ -24,7 +24,7 @@ const IconFont = createFromIconfontCN({
 });
 
 interface Props {
-  articles: ArticleContents;
+  articles: Articles;
 }
 
 export const ArticleElement = ({ articles }: Props): JSX.Element => {
@@ -37,7 +37,7 @@ export const ArticleElement = ({ articles }: Props): JSX.Element => {
         <Title>{articles.value}</Title>
       </div>
       <Body>
-        {articles.data.map((article: ArticleData) => (
+        {articles.data.map((article: Article) => (
           <Tag color="processing">
             {makeATag(article.url, article.content)}&nbsp;
             <IconFont type="icon-tuichu" />

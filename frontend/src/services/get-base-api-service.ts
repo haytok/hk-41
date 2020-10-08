@@ -1,11 +1,12 @@
 import axios, { AxiosResponse } from "axios";
 
+import { BASE_REQUEST_PATH } from "../constants/request-path";
 import { Experiences } from "../domain/experiences-domain";
 import { Works } from "../domain/works-model";
 import { Skills } from "../domain/skills-model";
-import { BASE_REQUEST_PATH } from "../constants/request-path";
+import { Articles } from "../domain/articles-model";
 
-type DataTypes = Experiences | Works | Skills;
+type DataTypes = Experiences | Works | Skills | Articles;
 
 export const getDataAPI = <T extends DataTypes>(apiType: string) => {
   const path = `${BASE_REQUEST_PATH}${apiType}`;

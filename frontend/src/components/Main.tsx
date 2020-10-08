@@ -6,7 +6,7 @@ import "../App.css";
 import { Experiences } from "../domain/experiences-domain";
 import { Works } from "../domain/works-model";
 import { Skills } from "../domain/skills-model";
-import { ArticleContents } from "../domain/articles-model";
+import { Articles } from "../domain/articles-model";
 import { ResarchContents } from "../domain/research-model";
 
 import { HeaderElement } from "../components/HeaderElemet";
@@ -24,12 +24,13 @@ interface Props {
   experiences: Experiences;
   works: Works;
   skills: Skills;
-  articles: ArticleContents;
+  articles: Articles;
   researchContens: ResarchContents;
   // Actions
   onGetExperiencesAction: () => void;
   onGetWorksAction: () => void;
   onGetSkillsAction: () => void;
+  onGetArticlesAction: () => void;
 }
 
 export const MainComponent = ({
@@ -42,12 +43,14 @@ export const MainComponent = ({
   onGetExperiencesAction,
   onGetWorksAction,
   onGetSkillsAction,
+  onGetArticlesAction,
 }: Props) => {
   // hooks
   useEffect(() => {
     onGetExperiencesAction();
     onGetWorksAction();
     onGetSkillsAction();
+    onGetArticlesAction();
     // eslint-disable-next-line
   }, []);
 
