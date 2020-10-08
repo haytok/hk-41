@@ -4,8 +4,8 @@ import "antd/es/menu/style";
 import "../App.css";
 
 import { Experiences } from "../domain/experiences-domain";
-import { WorkContents } from "../domain/works-model";
-import { SkillContents } from "../domain/skills-model";
+import { Works } from "../domain/works-model";
+import { Skills } from "../domain/skills-model";
 import { ArticleContents } from "../domain/articles-model";
 import { ResarchContents } from "../domain/research-model";
 
@@ -22,8 +22,8 @@ import "../static/css/main.css";
 
 interface Props {
   experiences: Experiences;
-  works: WorkContents;
-  skillsContens: SkillContents;
+  works: Works;
+  skills: Skills;
   articles: ArticleContents;
   researchContens: ResarchContents;
   // Actions
@@ -34,7 +34,7 @@ interface Props {
 export const MainComponent = ({
   experiences,
   works,
-  skillsContens,
+  skills,
   articles,
   researchContens,
   // Actions
@@ -68,7 +68,7 @@ export const MainComponent = ({
           <AboutElement />
           <ExperiencesElement experiences={experiences} />
           <WorksElement works={works} />
-          {TagsElement<SkillContents>(skillsContens)}
+          {TagsElement<Skills>(skills)}
           <ArticleElement articles={articles} />
           {TagsElement<ResarchContents>(researchContens)}
           <ProgramminElement />

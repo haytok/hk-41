@@ -1,12 +1,7 @@
-import axios, { AxiosResponse } from "axios";
-
-import { SkillContents } from "../domain/skills-model";
-import { BASE_REQUEST_PATH } from "../constants/request-path";
+import { getDataAPI } from "./get-base-api-service";
+import { Skills } from "../domain/skills-model";
 
 export const getSkillsAPI = () => {
-  const path = `${BASE_REQUEST_PATH}skills/`;
-  return axios.get(path).then(({ data }: AxiosResponse<SkillContents>) => {
-    console.log("getSkillsAPI", data);
-    return Promise.resolve(data);
-  });
+  const apiType = "skills";
+  return getDataAPI<Skills>(apiType);
 };

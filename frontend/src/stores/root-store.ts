@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
   ...rootSkillsReducer,
 });
 
-const rootMiddleware = [skillsStoreOnMiddleware, experiencesStoreOnMiddleware];
+const rootMiddleware = [experiencesStoreOnMiddleware, skillsStoreOnMiddleware];
 
 export type RootState = ReturnType<typeof rootReducer>;
 

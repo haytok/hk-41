@@ -1,17 +1,17 @@
 import { combineReducers, createAction, createReducer } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 
-import { SkillContents } from "../domain/skills-model";
+import { Skills } from "../domain/skills-model";
 
-interface $addTestDataActionPayload {
+interface $addSkillsDataActionPayload {
   payload: {
-    skills: SkillContents;
+    skills: Skills;
   };
 }
 
 export const $addSkillsAction = createAction(
   "skills/$added",
-  (skills: SkillContents): $addTestDataActionPayload => {
+  (skills: Skills): $addSkillsDataActionPayload => {
     return {
       payload: {
         skills,
@@ -21,11 +21,11 @@ export const $addSkillsAction = createAction(
 );
 
 interface SkillsState {
-  skillContents: SkillContents;
+  skills: Skills;
 }
 
 const initialState: SkillsState = {
-  skillContents: {
+  skills: {
     key: "",
     value: "",
     data: [],
@@ -38,7 +38,7 @@ export const skillsReducer = createReducer<SkillsState>(
     builder.addCase($addSkillsAction, (state, { payload }) => {
       return {
         ...state,
-        skillContents: payload.skills,
+        skills: payload.skills,
       };
     })
 );

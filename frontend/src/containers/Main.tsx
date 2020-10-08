@@ -1,7 +1,7 @@
 import React from "react";
 
 import { MainComponent } from "../components/Main";
-import { WorkContents } from "../domain/works-model";
+import { Works } from "../domain/works-model";
 import { ResarchContents } from "../domain/research-model";
 import { ArticleContents } from "../domain/articles-model";
 import { getSkillsAction } from "../application-actions";
@@ -11,7 +11,7 @@ import { getExperiencesAction } from "../application-actions/experiences-actions
 import { useExperiencesGetter } from "../stores/experiences-query";
 
 export const Main = (): JSX.Element => {
-  const works: WorkContents = {
+  const works: Works = {
     key: "works",
     value: "Works",
     data: [
@@ -81,7 +81,7 @@ export const Main = (): JSX.Element => {
     ],
   };
   // Get stores
-  const skillsContens = useSkillsGetter();
+  const skills = useSkillsGetter();
   const experiences = useExperiencesGetter();
 
   // Actions
@@ -91,7 +91,7 @@ export const Main = (): JSX.Element => {
     <MainComponent
       experiences={experiences}
       works={works}
-      skillsContens={skillsContens}
+      skills={skills}
       articles={articles}
       researchContens={researchContens}
       // Actions

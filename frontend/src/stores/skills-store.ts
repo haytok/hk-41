@@ -3,7 +3,7 @@ import { Dispatch, Middleware, MiddlewareAPI } from "redux";
 import { RootState } from "./root-store";
 import { getSkillsAction } from "../application-actions";
 import { getSkillsAPI } from "../services/get-skills-api-service";
-import { SkillContents } from "../domain/skills-model";
+import { Skills } from "../domain/skills-model";
 import { $addSkillsAction } from "./skills-read-store";
 
 export const skillsStoreOnMiddleware: Middleware = ({
@@ -17,7 +17,7 @@ export const skillsStoreOnMiddleware: Middleware = ({
   switch (action.type) {
     case getSkillsAction.type: {
       try {
-        const skills: SkillContents = await getSkillsAPI();
+        const skills: Skills = await getSkillsAPI();
         next($addSkillsAction(skills));
       } catch (error) {
         alert(error.message);

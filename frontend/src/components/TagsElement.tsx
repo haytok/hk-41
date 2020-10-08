@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Layout, Tag } from "antd";
 
-import { SkillContents } from "../domain/skills-model";
+import { Skills } from "../domain/skills-model";
 import { ResarchContents } from "../domain/research-model";
 
 const Content = styled(Layout.Content)`
@@ -18,7 +18,7 @@ const Body = styled.div`
   text-align: center;
 `;
 
-export const TagsElement = <T extends SkillContents | ResarchContents>(
+export const TagsElement = <T extends Skills | ResarchContents>(
   tags: T
 ): JSX.Element => {
   return (
