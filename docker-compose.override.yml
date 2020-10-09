@@ -8,7 +8,7 @@ services:
   #     - "80:80"
   #     - "443:443"
   #   environment:
-  #     DOMAINS: "www.hk-41.work -> http://frontend:81"
+  #     DOMAINS: "hk-41.work -> http://frontend:81"
   #     STAGE: "production"
   frontend:
     build:

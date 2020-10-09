@@ -26,7 +26,7 @@ SECRET_KEY = '83_dx7wgikq)eau#)2&1rnot7o(w0ee27eb05yv28^mk3#t%3$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.environ.get("DJANGO_APP_MODE") == "dev" else False
 
-ALLOWED_HOSTS = ["localhost"] if os.environ.get("DJANGO_APP_MODE") == "dev" else ["www.hk-41.work"]
+ALLOWED_HOSTS = ["localhost"] if os.environ.get("DJANGO_APP_MODE") == "dev" else ["hk-41.work"]
 
 
 # Application definition
@@ -127,4 +127,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-CORS_ORIGIN_WHITELIST = ('http://localhost:81',) if os.environ.get('DJANGO_APP_MODE') == 'dev' else ('http://www.hk-41.work',)
+CORS_ORIGIN_WHITELIST = ('http://localhost:81',) if os.environ.get('DJANGO_APP_MODE') == 'dev' else ('http://hk-41.work',)

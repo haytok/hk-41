@@ -111,7 +111,7 @@ class WorksView(TemplateView):
               "body": "HTML, CSS, TypeScript, Angular, Python, Django Rest Frameworkで作成",
             },
             {
-              "url": "https://www.hk-41.work/",
+              "url": "https://hk-41.work/",
               "content": "Portfolio",
               "title": "私のポートフォリオ(このページ)",
               "body": "React, Ant Design, EC2, Route53, Elastic IP, Docker, docker-compose で自作",
