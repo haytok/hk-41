@@ -2,6 +2,7 @@
 FROM node:12-alpine
 
 ENV CI=true
+ENV REACT_APP_MODE=dev
 
 WORKDIR /app
 
