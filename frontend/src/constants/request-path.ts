@@ -10,4 +10,4 @@ const getBaseRequestPath = (): string => {
   }
 };
 
-export const BASE_REQUEST_PATH = getBaseRequestPath();
+export const BASE_REQUEST_PATH = "api/"; // getBaseRequestPath();
