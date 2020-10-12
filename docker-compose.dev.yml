@@ -13,9 +13,10 @@ services:
   proxy:
     image: nginx:latest
     ports:
-      - "81:81" # ブラウザからは localhost:<前のポート番号> でアクセスする
+      # ブラウザからは localhost:<前のポート番号> でアクセスする
+      - "81:81"
     volumes:
-      - ./proxy/conf.d:/etc/nginx/conf.d
+      - ./proxy/conf.d/dev:/etc/nginx/conf.d
     restart: always
   frontend:
     build:
