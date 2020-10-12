@@ -1,32 +1,33 @@
 version: "3"
 
 services:
-  # https-portal:
-  #   image: steveltn/https-portal:1
-  #   container_name: server
-  #   ports:
-  #     - "80:80"
-  #     - "443:443"
-  #   environment:
-  #     DOMAINS: "hk-41.work -> http://frontend:81"
-  #     STAGE: "production"
+  https:
+    image: steveltn/https-portal:1
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+    environment:
+      STAGE: production
+      DOMAINS: "hk-41.work -> http://proxy:80"
+  proxy:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./proxy/conf.d/prod:/etc/nginx/conf.d
+    restart: always
   frontend:
     build:
       context: ./frontend
       dockerfile: ./docker/prod/Dockerfile
       args:
         REACT_APP_MODE: $REACT_APP_MODE
-    ports:
-      - "80:80"
-    # environment:
-    #   - REACT_APP_MODE=prod
     restart: always
   backend:
     build:
       context: ./backend
       dockerfile: ./docker/prod/Dockerfile
-    ports:
-      - "82:80"
     environment:
       - DJANGO_APP_MODE=prod
     restart: always
