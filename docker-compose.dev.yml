@@ -1,14 +1,21 @@
 version: "3"
 
 services:
+  proxy:
+    image: nginx:latest
+    ports:
+      - "81:81" # ブラウザからは localhost:<前のポート番号> でアクセスする
+    volumes:
+      - ./proxy/conf.d:/etc/nginx/conf.d
+    restart: always
   frontend:
     build:
       context: ./frontend
       dockerfile: ./docker/dev/Dockerfile
       args:
         REACT_APP_MODE: $REACT_APP_MODE
-    ports:
-      - "81:3000"
+    # ports:
+    #   - "3000:3000"
     volumes:
       - ./frontend:/app
     # environment:
@@ -18,8 +25,8 @@ services:
       context: ./backend
       dockerfile: ./docker/dev/Dockerfile
     command: python ./backend/manage.py runserver 0.0.0.0:8000
-    ports:
-      - "82:8000"
+    # ports:
+    #   - "8000:8000"
     volumes:
       - ./backend:/app
     environment:

@@ -1,6 +1,8 @@
 version: "3"
 
 services:
+  proxy:
+    container_name: proxy
   frontend:
     container_name: frontend
   backend:
