@@ -9,11 +9,11 @@ services:
     restart: always
     environment:
       STAGE: production
-      DOMAINS: "hk-41.work -> http://proxy:80"
+      DOMAINS: "hk-41.work -> http://proxy:81"
   proxy:
     image: nginx:latest
     ports:
-      - "80:80"
+      - "81:81"
     volumes:
       - ./proxy/conf.d/prod:/etc/nginx/conf.d
     restart: always
