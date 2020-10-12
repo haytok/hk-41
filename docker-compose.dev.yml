@@ -1,6 +1,15 @@
 version: "3"
 
 services:
+  https:
+    image: steveltn/https-portal:1
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+    environment:
+      STAGE: local
+      DOMAINS: "www.dev.localhost -> http://proxy:81"
   proxy:
     image: nginx:latest
     ports:
