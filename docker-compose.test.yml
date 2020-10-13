@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  https:
+    image: steveltn/https-portal:1
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+    environment:
+      STAGE: local
+      DOMAINS: "www.dev.localhost -> http://proxy:81"
+  proxy:
+    image: nginx:latest
+    ports:
+      - "81:81"
+    volumes:
+      - ./proxy/conf.d/prod:/etc/nginx/conf.d
+    restart: always
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ./docker/prod/Dockerfile
+      args:
+        REACT_APP_MODE: $REACT_APP_MODE
+    restart: always
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ./docker/prod/Dockerfile
+    environment:
+      - DJANGO_APP_MODE=prod
+    restart: always
