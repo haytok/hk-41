@@ -17,15 +17,12 @@ services:
       - "81:81"
     volumes:
       - ./proxy/conf.d/dev:/etc/nginx/conf.d
-    restart: always
   frontend:
     build:
       context: ./frontend
       dockerfile: ./docker/dev/Dockerfile
       args:
         REACT_APP_MODE: $REACT_APP_MODE
-    # ports:
-    #   - "3000:3000"
     volumes:
       - ./frontend:/app
     # environment:
@@ -35,8 +32,6 @@ services:
       context: ./backend
       dockerfile: ./docker/dev/Dockerfile
     command: python ./backend/manage.py runserver 0.0.0.0:8000
-    # ports:
-    #   - "8000:8000"
     volumes:
       - ./backend:/app
     environment:
