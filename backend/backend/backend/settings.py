@@ -26,7 +26,7 @@ SECRET_KEY = '83_dx7wgikq)eau#)2&1rnot7o(w0ee27eb05yv28^mk3#t%3$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.environ.get("DJANGO_APP_MODE") == "dev" else False
 
-ALLOWED_HOSTS = ["localhost", "www.dev.localhost"] if os.environ.get("DJANGO_APP_MODE") == "dev" else ["www.dev.localhost", "frontend", "hk-41.work"]
+ALLOWED_HOSTS = ["localhost", "frontend", "backend", "www.dev.localhost"] if os.environ.get("DJANGO_APP_MODE") == "dev" else ["www.dev.localhost", "frontend", "backend", "hk-41.work"]
 
 
 # Application definition
