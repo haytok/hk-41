@@ -8,15 +8,13 @@
 ## 使用した技術
 
 - AWS の `EC2` に `Route53` と `Elastic IP` を使用し、 `Docker` と `docker-compose` を使ってデプロイしています。
-- フロントエンドには `React` と `styled-components` を使用して、 `Functional Component` で実装しています。
+- フロントエンドには `React` と `styled-components` と `Ant Desig` を使用して、 `Functional Component` で実装しています。
 - ブラウザから修正できるように、バックエンドに `Django Rest Framework` を使って管理画面を作成している途中です。
 
 ## 起動
-- 開発環境は、Docker + docker-compose + make を用いて構築します。
+- 開発環境は、`Docker` + `docker-compose` + `make` を用いて構築します。
 
-### docker-compose
-
-#### 開発環境
+### 開発環境
 
 - 開発環境では、以下の手順でアプリケーションを起動します。フロントエンドのアプリケーションは `https://www.dev.localhost/` でアプリケーションは起動します。
 - 開発環境のマシンの `/etc/hosts` に `127.0.0.1 www.dev.localhost` に追記しておく必要があります。
@@ -28,13 +26,13 @@ make dev-build
 make dev-up
 ```
 
-コンテナを落とす時は、以下のコマンドを実行します。
+- コンテナを落とす時は、以下のコマンドを実行します。
 
 ```bash
 make dev-down
 ```
 
-#### 本番環境をテスト
+### 本番環境をテスト
 
 - 開発環境では、以下の手順でアプリケーションを起動します。フロントエンドのアプリケーションは `https://www.dev.localhost/` でアプリケーションは起動します。
 
@@ -45,13 +43,13 @@ make test-build
 make test-up
 ```
 
-コンテナを落とす時は、以下のコマンドを実行します。
+- コンテナを落とす時は、以下のコマンドを実行します。
 
 ```bash
 make test-down
 ```
 
-#### 本番環境
+### 本番環境
 
 - 本番環境では、以下の手順でアプリケーションを起動します。
 - デプロイする際に、最新の build したファイルを push しておく必要があります。
@@ -63,7 +61,7 @@ make prod-build
 make prod-up
 ```
 
-コンテナを落とす時は、以下のコマンドを実行します。
+- コンテナを落とす時は、以下のコマンドを実行します。
 
 ```bash
 make prod-down
