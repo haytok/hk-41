@@ -1,6 +1,5 @@
 import axios, { AxiosResponse } from "axios";
 
-import { BASE_REQUEST_PATH } from "../constants/request-path";
 import { Experiences } from "../domain/experiences-domain";
 import { Works } from "../domain/works-model";
 import { Skills } from "../domain/skills-model";
@@ -14,14 +13,10 @@ axios.defaults.headers.get["Content-Type"] =
 type DataTypes = Experiences | Works | Skills | Articles | ResearchContents;
 
 export const getDataAPI = <T extends DataTypes>(apiType: string) => {
-  const path = `${BASE_REQUEST_PATH}${apiType}`;
-  console.log(
-    "BASE_REQUEST_PATH",
-    BASE_REQUEST_PATH,
-    process.env.REACT_APP_MODE
-  );
+  const path = `api/${apiType}`;
+  console.log("process.env.REACT_APP_MODE", process.env.REACT_APP_MODE);
   return axios.get(path).then(({ data }: AxiosResponse<T>) => {
-    console.log(BASE_REQUEST_PATH, apiType, data);
+    console.log(apiType, data);
     return Promise.resolve(data);
   });
 };

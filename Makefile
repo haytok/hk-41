@@ -1,3 +1,4 @@
+# 開発環境
 .PHONY: dev-build
 dev-build:
 	docker-compose -f docker-compose.yml -f docker-compose.dev.yml build
@@ -10,6 +11,20 @@ dev-up:
 dev-down:
 	docker-compose -f docker-compose.yml -f docker-compose.dev.yml down
 
+# 本番環境のテスト
+.PHONY: test-build
+test-build:
+	docker-compose -f docker-compose.yml -f docker-compose.test.yml build
+
+.PHONY: test-up
+test-up:
+	docker-compose -f docker-compose.yml -f docker-compose.test.yml up
+
+.PHONY: test-down
+test-down:
+	docker-compose -f docker-compose.yml -f docker-compose.test.yml down
+
+# 本番環境
 .PHONY: prod-build
 prod-build:
 	docker-compose build

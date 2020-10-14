@@ -8,8 +8,8 @@ services:
       - "443:443"
     restart: always
     environment:
-      STAGE: production
-      DOMAINS: "hk-41.work -> http://proxy:81"
+      STAGE: local
+      DOMAINS: "www.dev.localhost -> http://proxy:81"
   proxy:
     image: nginx:latest
     ports:
