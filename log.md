@@ -98,3 +98,109 @@ Could not find a declaration file for module 'react-vertical-timeline-component'
 
 - [型定義ファイル](https://typescript-jp.gitbook.io/deep-dive/type-system/intro/d.ts)
 - [りあくと 4-6. モジュールの型定義]()
+
+## よく忘れる Docker コマンド集
+
+### コマンド一覧
+
+- 停止しているコンテナを全て削除するコマンド
+
+```bash
+docker container prune
+```
+
+- 使われていない volume を削除する
+
+```bash
+docker volume prune
+```
+
+- コンテナが使っていない image を全て削除する
+
+```bash
+docker image prune
+```
+
+- 停止コンテナ、未使用イメージ、未使用ボリュームを削除する
+
+```bash
+docker system prune
+```
+
+- 特定のイメージを削除する
+
+```bash
+docker rmi <image name>
+
+docker rmi golang
+```
+
+### none のイメージに関して
+
+- 以下のような <none> のイメージは、`dangling image` と言って、同じ名前のイメージ (既存のタグを再利用する際に) 生成されてしまう。
+
+```bash
+<none>                  <none>              cd0b351829d3        27 hours ago         1.07GB
+```
+
+- これは、Docker では、同一名のイメージを作成することができないからである。
+- 挙動としては以下のようになり、`dangling` (宙ぶらりん) となる。
+
+1. 最新のビルドした結果生成されたイメージが CLI などで指定されたイメージ名となる。
+2. すでに存在していた同一名称のイメージが、`<none>` という名称未設定の状態に置き換わる。
+
+- 例
+- 以下のように Dockerfile を定義して、`docker build -t go .` でビルドしたとする。
+
+```Dockerfile
+FROM golang
+
+RUN echo Hello
+```
+
+- この時生成されたイメージは、`docker images` コマンドで確認すると、次のようになる。
+
+```bash
+REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
+go                      latest              e09e94ae5c5b        2 minutes ago       839MB
+golang                  latest              279be524ea74        5 hours ago         839MB
+```
+
+- そこで、Dockerfile を書き換えて再度、`docker build -t go .` でビルドをする。
+
+```Dockerfile
+FROM golang
+
+RUN echo Hello!
+```
+
+- この時生成されたイメージは、`docker images` コマンドで確認すると、次のようになる。
+
+```bash
+REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
+go                      latest              1af21b73aa5a        4 seconds ago       839MB
+<none>                  <none>              e09e94ae5c5b        2 minutes ago       839MB
+golang                  latest              279be524ea74        5 hours ago         839MB
+```
+
+- この結果から確認できるように、もともと `go` のタグがついていた `IMAGE ID` は `e09e94ae5c5b` であるが、Dockerfile を修正して再ビルドすると、`IAMAGE ID` が `e09e94ae5c5b` のタグ名は `<none>` になり、新しく生成されたイメージのタグ名が `go` になっていることがわかる。
+
+- したがって、Docker を再ビルドすると、不要な none のイメージが生成され、ホストマシンの容量を圧迫することになるので、定期的にイメージを削除する必要がある。
+
+### fs layer とは
+
+### 参考
+
+- [Docker に<none>:<none>なイメージが生まれてくる理由](https://suin.io/540)
+- [Docker の不要なコンテナ・イメージを一括削除する方法](https://suin.io/537)
+- [docker images に表示される＜ none ＞を消す。dangling](https://codechord.com/2019/08/docker-images-none-dangling/)
+
+---
+
+## 表題
+
+### 生じたエラー or 課題
+
+### 解消方法
+
+### 参考
