@@ -71,3 +71,6 @@ make prod-up
 ```bash
 make prod-down
 ```
+
+## Log
+- [Log](https://github.com/dilmnqvovpnmlib/hk-41/wiki/Log)
