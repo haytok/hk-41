@@ -11,7 +11,12 @@
 - フロントエンドには `React` と `styled-components` と `Ant Desig` を使用して、 `Functional Component` で実装しています。
 - ブラウザから修正できるように、バックエンドに `Django Rest Framework` を使って管理画面を作成している途中です。
 
+## 構成図
+
+![構成図](hk-41.png)
+
 ## 起動
+
 - 開発環境は、`Docker` + `docker-compose` + `make` を用いて構築します。
 
 ### 開発環境
